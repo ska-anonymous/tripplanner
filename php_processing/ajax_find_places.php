@@ -33,10 +33,16 @@
 
         // output the response
         $response = json_decode($response);
-        
-        $response = array('error'=> false, 'error-message'=> '', 'location-data'=> $response);
-        echo json_encode($response);
-        exit(0);
+        if($response){
+            $response = array('error'=> false, 'error-message'=> '', 'location-data'=> $response);
+            echo json_encode($response);
+            exit(0);
+        }else{
+            $response = array('error'=> true, 'error-message'=> 'No Data Received. Check You Internet Connection');
+            echo json_encode($response);
+            exit(0);
+
+        }
         
     }
 ?>

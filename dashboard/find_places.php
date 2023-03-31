@@ -56,7 +56,7 @@
                         <br>
                         <hr>
                         <div class="row" id="places-container">
-                            
+
                         </div>
                     </div>
                 </div>
@@ -73,9 +73,10 @@
     ?>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlpLpGQnjDpqtgTvJDRxmfWXsqiX_L-as&callback=mapLoaded&libraries=places" async defer></script>
     <script>
-        function mapLoaded(){
+        function mapLoaded() {
             // an empty function but is required as callback in api loading
         }
+
         function initMap(placeId, element) {
             var map = new google.maps.Map(element, {
                 zoom: 15
@@ -112,7 +113,6 @@
                 if (locationText.length < 3) {
                     return;
                 }
-                console.log(locationText);
                 let loadingIcon = document.querySelector('#loading-icon');
                 loadingIcon.style.visibility = "visible";
 
@@ -128,7 +128,6 @@
                         return response.json();
                     })
                     .then(data => {
-                        console.log(data);
                         if (data.error) {
                             throw new Error(data['error-message']);
                         } else if (data['location-data']['status'].toLowerCase() != "ok") {
@@ -143,13 +142,15 @@
                                 let rating = location.rating ? location.rating : false;
                                 let businessStatus = location.business_status ? location.business_status : false;
                                 let placeId = location.place_id ? location.place_id : '';
+                                let placeType = location.types ? location.types : '';
+                                placeType = JSON.stringify(placeType);
                                 let ratingHtml = '';
-                                if(rating){
+                                if (rating) {
                                     ratingLength = Math.floor(Number(rating));
-                                    for(i=0; i<ratingLength; i++){
+                                    for (i = 0; i < ratingLength; i++) {
                                         ratingHtml += '<i class="bi bi-star-fill"></i>';
                                     }
-                                    if(rating > Math.floor(Number(rating))){
+                                    if (rating > Math.floor(Number(rating))) {
                                         ratingHtml += '<i class="bi bi-star-half"></i>'
                                     }
                                 }
@@ -157,7 +158,7 @@
                             <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
                                 <div class="card card-primary d-flex flex-fill">
                                     <div class="card-header border-bottom-0">
-                                        <img src="${icon}" style="position:absolute; right:10px; width:30px; border-radius:50px;">
+                                        <img src="${icon}" style="position:absolute; right:10px; width:30px; border-radius:50px; background-color: white;">
                                         <h3>${name}</h3>
                                         <p>Address: ${formattedAddress}</p>
                                         ${businessStatus ? `<p>Business Status: ${businessStatus}</p>` : ''}
@@ -166,15 +167,24 @@
                                     <div class="card-body pt-0 map" data-place-id="${placeId}" style="height:250px;">
 
                                     </div>
-                                    <div class="card-footer" data-place-id="${placeId}" data-name="${name}" data-icon="${icon}" data-rating="${rating}" data-address="${formattedAddress}" data-bussiness-status="${businessStatus}">
+                                    <div class="card-footer">
+                                    <form>
+                                        <input type="hidden" name="place_id" value="${placeId}">
+                                        <input type="hidden" name="place_name" value="${name}">
+                                        <input type="hidden" name="place_icon" value="${icon}">
+                                        <input type="hidden" name="place_rating" value="${rating}">
+                                        <input type="hidden" name="place_address" value="${formattedAddress}">
+                                        <input type="hidden" name="place_business_status" value="${businessStatus}">
+                                        <input type="hidden" name="place_types" value='${placeType}'>
                                         <div class="text-right">
-                                            <a href="#" class="btn btn-sm bg-teal">
+                                            <a href="#" class="btn btn-sm bg-teal" onclick="addToWishList(event)">
                                                 <i class="bi bi-heart"></i> Add to Wish List
                                             </a>
                                             <a href="#" class="btn btn-sm btn-primary">
                                             <i class="bi bi-bus-front-fill"></i> Plan a Trip
                                             </a>
                                         </div>
+                                    </form>
                                     </div>
                                 </div>
                             </div>
@@ -184,7 +194,11 @@
                             })
 
                             document.querySelector('#places-container').innerHTML = html;
-                            putMaps();
+                            try {
+                                putMaps();
+                            } catch (err) {
+                                throw new Error("Cannot Load Maps");
+                            }
 
                         }
                     })
@@ -197,12 +211,55 @@
 
             })
         })
-
-        function putMaps(){
+        // 
+        function putMaps() {
             let mapContainers = document.querySelectorAll('.map[data-place-id]');
-            Array.from(mapContainers).forEach(container=>{
+            Array.from(mapContainers).forEach(container => {
                 let placeId = container.getAttribute('data-place-id');
-                initMap(placeId, container);
+                (function mapInitiator(){
+                    try{
+                        initMap(placeId, container);
+                    }catch(err){
+                        mapInitiator();
+                    }
+                })();
+
             })
+        }
+
+        function addToWishList(event) {
+            event.preventDefault();
+            let button = event.currentTarget;
+            button.style.disabled = true;
+            let form = button.closest('form');
+
+            let formData = new FormData(form);
+            let url = '../php_processing/ajax_add_to_wishlist.php';
+            fetch(url, {
+                    method: "POST",
+                    body: formData,
+                })
+                .then(response => {
+                    return response.json();
+                }, () => {
+                    toastr.error('Failed to add. Check your internet connection and try again');
+                })
+                .then(json => {
+                    if (json.error) {
+                        toastr.error(json['error-message']);
+                    } else {
+                        toastr.success("Added to Wishlist");
+                    }
+                }, () => {
+                    toastr.error("Failed to add. Some Unknown Error. Please Try again");
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+                .finally(() => {
+                    button.style.disabled = false;
+                })
+
+
         }
     </script>
