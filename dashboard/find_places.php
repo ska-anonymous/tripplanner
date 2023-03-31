@@ -2,16 +2,15 @@
 <html lang="en">
 
 <head>
-    <title>SKAG | Find Places</title>
-    <!-- Select2 -->
-    <link rel="stylesheet" href="../plugins/select2/css/select2.min.css">
-    <link rel="stylesheet" href="../plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <title>Find Places</title>
 
     <!-- include Header here -->
     <?php
     require_once("../components/header.php");
     ?>
     <!-- Header Ends here -->
+
+
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -34,134 +33,37 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title">
-                            Find Places By Entering City Name
+                            Find Places By searching
                         </div>
                     </div>
                     <div class="card-body">
                         <form id="places_form">
-                            <label for="city-name">Location Name</label>
+                            <label for="location-search">Search For a Place</label>
                             <div class="row">
                                 <div class="col-sm-10">
                                     <div class="form-group">
-                                        <div class="select2-purple" data-select2-id="29">
-                                            <select class="select2 select2-hidden-accessible" multiple="" data-placeholder="Select a State" data-dropdown-css-class="select2-purple" style="width: 100%;" data-select2-id="15" tabindex="-1" aria-hidden="true">
-                                                <option data-select2-id="35">Alabama</option>
-                                                <option data-select2-id="36">Alaska</option>
-                                                <option data-select2-id="37">California</option>
-                                                <option data-select2-id="38">Delaware</option>
-                                                <option data-select2-id="39">Tennessee</option>
-                                                <option data-select2-id="40">Texas</option>
-                                                <option data-select2-id="41">Washington</option>
-                                            </select><span class="select2 select2-container select2-container--default select2-container--below" dir="ltr" data-select2-id="16" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--multiple" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1" aria-disabled="false">
-                                                        <ul class="select2-selection__rendered">
-                                                            <li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" role="searchbox" aria-autocomplete="list" placeholder="Select a State" style="width: 449.667px;"></li>
-                                                        </ul>
-                                                    </span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
-                                        </div>
+                                        <input type="text" placeholder="Tourist sites in London" id="location-search" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-sm-2">
-                                    <button type="submit" class="btn btn-primary btn-block">Find</button>
+                                    <button type="submit" id="btn-submit" class="btn btn-primary btn-block">Find</button>
                                 </div>
+                            </div>
                         </form>
-                    </div>
-                    <br>
-                    <hr>
-                    <div class="row">
-                        <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
-                            <div class="card text-light d-flex flex-fill" style="background: linear-gradient(to bottom, transparent 0%,  rgb(0,0,0,0.3)) 100%, url('https://source.unsplash.com/random/300×300/?nature');">
-                                <div class="card-header border-bottom-0">
-                                    Digital Strategist
-                                </div>
-                                <div class="card-body pt-0">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <h2 class="lead"><b>Nicole Pearson</b></h2>
-                                            <p class="text-sm"><b>About: </b> Web Designer / UX / Graphic Artist / Coffee Lover </p>
-                                            <ul class="ml-4 mb-0 fa-ul">
-                                                <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Address: Demo Street 123, Demo City 04312, NJ</li>
-                                                <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #: + 800 - 12 12 23 52</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="text-right">
-                                        <a href="#" class="btn btn-sm bg-teal">
-                                            <i class="fas fa-comments"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-sm btn-primary">
-                                            <i class="fas fa-user"></i> View Profile
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="text-center">
+                            <img src="../dist/loading.gif" id="loading-icon" style="visibility: hidden;" alt="Loading....">
                         </div>
-                        <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
-                            <div class="card d-flex flex-fill" style="background: linear-gradient(to bottom, transparent 0%,  rgb(0,0,0,0.3)) 100%, url('https://source.unsplash.com/random/300×300/?nature');">
-                                <div class="card-header border-bottom-0">
-                                    Digital Strategist
-                                </div>
-                                <div class="card-body pt-0">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <h2 class="lead"><b>Nicole Pearson</b></h2>
-                                            <p class="text-sm"><b>About: </b> Web Designer / UX / Graphic Artist / Coffee Lover </p>
-                                            <ul class="ml-4 mb-0 fa-ul">
-                                                <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Address: Demo Street 123, Demo City 04312, NJ</li>
-                                                <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #: + 800 - 12 12 23 52</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="text-right">
-                                        <a href="#" class="btn btn-sm bg-teal">
-                                            <i class="fas fa-comments"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-sm btn-primary">
-                                            <i class="bi bi-heart"></i> Add to Wishlist
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
-                            <div class="card d-flex flex-fill" style="background: linear-gradient(to bottom, transparent 0%,  rgb(0,0,0,0.3)) 100%, url('https://source.unsplash.com/random/300×300/?nature');">
-                                <div class="card-header border-bottom-0">
-                                    Digital Strategist
-                                </div>
-                                <div class="card-body pt-0">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <h2 class="lead"><b>Nicole Pearson</b></h2>
-                                            <p class="text-sm"><b>About: </b> Web Designer / UX / Graphic Artist / Coffee Lover </p>
-                                            <ul class="ml-4 mb-0 fa-ul">
-                                                <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Address: Demo Street 123, Demo City 04312, NJ</li>
-                                                <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #: + 800 - 12 12 23 52</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="text-right">
-                                        <a href="#" class="btn btn-sm bg-teal">
-                                            <i class="fas fa-comments"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-sm btn-primary">
-                                            <i class="fas fa-user"></i> View Profile
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+                        <br>
+                        <hr>
+                        <div class="row" id="places-container">
+                            
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- Main Content Ends Here -->
-        </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content -->
+                <!-- Main Content Ends Here -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
 
@@ -169,8 +71,138 @@
     <?php
     require_once("../components/footer.php");
     ?>
-    <script src="../plugins/select2/js/select2.full.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlpLpGQnjDpqtgTvJDRxmfWXsqiX_L-as&callback=mapLoaded&libraries=places" async defer></script>
     <script>
-        //Initialize Select2 Elements
-        $('.select2').select2()
+        function mapLoaded(){
+            // an empty function but is required as callback in api loading
+        }
+        function initMap(placeId, element) {
+            var map = new google.maps.Map(element, {
+                zoom: 15
+            });
+
+            var request = {
+                placeId: placeId
+            };
+
+            var service = new google.maps.places.PlacesService(map);
+
+            service.getDetails(request, function(place, status) {
+                if (status == google.maps.places.PlacesServiceStatus.OK) {
+                    map.setCenter(place.geometry.location);
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: place.geometry.location
+                    });
+                }
+            });
+        }
+    </script>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            // listen to input on location search field to find the correct location name using google place api
+            let placesForm = document.querySelector('#places_form');
+            placesForm.addEventListener('submit', (e) => {
+                event.preventDefault();
+
+                let submitButton = placesForm.querySelector('#btn-submit');
+                let locationSearch = document.querySelector('#location-search');
+                let locationText = locationSearch.value.trim();
+
+                if (locationText.length < 3) {
+                    return;
+                }
+                console.log(locationText);
+                let loadingIcon = document.querySelector('#loading-icon');
+                loadingIcon.style.visibility = "visible";
+
+                // now use api to fetch the locations name using the locationText as a query string
+                let url = `../php_processing/ajax_find_places.php`;
+                let formData = new FormData();
+                formData.append('location-text', locationText);
+                fetch(url, {
+                        method: "POST",
+                        body: formData,
+                    })
+                    .then(response => {
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log(data);
+                        if (data.error) {
+                            throw new Error(data['error-message']);
+                        } else if (data['location-data']['status'].toLowerCase() != "ok") {
+                            throw new Error("No Data was received. Try a valid search");
+                        } else {
+                            let locationData = data['location-data']['results'];
+                            let html = '';
+                            Array.from(locationData).forEach(location => {
+                                let name = location.name ? location.name : '';
+                                let icon = location.icon ? location.icon : '';
+                                let formattedAddress = location.formatted_address ? location.formatted_address : '';
+                                let rating = location.rating ? location.rating : false;
+                                let businessStatus = location.business_status ? location.business_status : false;
+                                let placeId = location.place_id ? location.place_id : '';
+                                let ratingHtml = '';
+                                if(rating){
+                                    ratingLength = Math.floor(Number(rating));
+                                    for(i=0; i<ratingLength; i++){
+                                        ratingHtml += '<i class="bi bi-star-fill"></i>';
+                                    }
+                                    if(rating > Math.floor(Number(rating))){
+                                        ratingHtml += '<i class="bi bi-star-half"></i>'
+                                    }
+                                }
+                                html += `
+                            <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                                <div class="card card-primary d-flex flex-fill">
+                                    <div class="card-header border-bottom-0">
+                                        <img src="${icon}" style="position:absolute; right:10px; width:30px; border-radius:50px;">
+                                        <h3>${name}</h3>
+                                        <p>Address: ${formattedAddress}</p>
+                                        ${businessStatus ? `<p>Business Status: ${businessStatus}</p>` : ''}
+                                        ${rating ? `<h5>Rating: <span class="text-warning">${ratingHtml}</span></h5>` : ''}
+                                    </div>
+                                    <div class="card-body pt-0 map" data-place-id="${placeId}" style="height:250px;">
+
+                                    </div>
+                                    <div class="card-footer" data-place-id="${placeId}" data-name="${name}" data-icon="${icon}" data-rating="${rating}" data-address="${formattedAddress}" data-bussiness-status="${businessStatus}">
+                                        <div class="text-right">
+                                            <a href="#" class="btn btn-sm bg-teal">
+                                                <i class="bi bi-heart"></i> Add to Wish List
+                                            </a>
+                                            <a href="#" class="btn btn-sm btn-primary">
+                                            <i class="bi bi-bus-front-fill"></i> Plan a Trip
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                                `;
+
+                            })
+
+                            document.querySelector('#places-container').innerHTML = html;
+                            putMaps();
+
+                        }
+                    })
+                    .catch(err => {
+                        toastr.error(err);
+                    })
+                    .finally(() => {
+                        loadingIcon.style.visibility = 'hidden';
+                    })
+
+            })
+        })
+
+        function putMaps(){
+            let mapContainers = document.querySelectorAll('.map[data-place-id]');
+            Array.from(mapContainers).forEach(container=>{
+                let placeId = container.getAttribute('data-place-id');
+                initMap(placeId, container);
+            })
+        }
     </script>
