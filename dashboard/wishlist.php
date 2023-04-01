@@ -63,7 +63,7 @@
                                 '.$business_status.'
                                 '.$ratingHtml.'
                             </div>
-                            <div class="card-body pt-0 map" data-place-id="${placeId}" style="height:250px;">
+                            <div class="card-body pt-0 map" data-place-id="'.$row['place_id'].'" style="height:250px;">
 
                             </div>
                             <div class="card-footer">
@@ -82,8 +82,52 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+
+    <!-- Include Footer Here -->
     <?php
     require_once('../components/footer.php');
     ?>
 
-    <!-- Include Footer Here -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlpLpGQnjDpqtgTvJDRxmfWXsqiX_L-as&callback=mapLoaded&libraries=places" async defer></script>
+    <script>
+        function mapLoaded() {
+            putMaps();
+        }
+
+        function initMap(placeId, element) {
+            var map = new google.maps.Map(element, {
+                zoom: 15
+            });
+
+            var request = {
+                placeId: placeId
+            };
+
+            var service = new google.maps.places.PlacesService(map);
+
+            service.getDetails(request, function(place, status) {
+                if (status == google.maps.places.PlacesServiceStatus.OK) {
+                    map.setCenter(place.geometry.location);
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: place.geometry.location
+                    });
+                }
+            });
+        }
+        // initialize maps on the map elements in the dom
+        function putMaps() {
+            let mapContainers = document.querySelectorAll('.map[data-place-id]');
+            Array.from(mapContainers).forEach(container => {
+                let placeId = container.getAttribute('data-place-id');
+                (function mapInitiator() {
+                    try {
+                        initMap(placeId, container);
+                    } catch (err) {
+                        mapInitiator();
+                    }
+                })();
+
+            })
+        }
+    </script>
