@@ -174,6 +174,14 @@ if (!$_SESSION['logged']) {
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="trip_planner.php" class="nav-link">
+                                <i class="nav-icon bi bi-card-list"></i>
+                                <p>
+                                    Trip Planner
+                                </p>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
