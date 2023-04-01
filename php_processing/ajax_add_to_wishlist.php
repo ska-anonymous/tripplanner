@@ -25,7 +25,8 @@
         }
 
         // now insert data to database
-        $sql = "INSERT INTO `wishlist`(`place_name`, `place_address`, `place_icon`, `place_rating`, `place_business_status`, `place_id`, `place_types`) VALUES ('$place_name','$place_address','$place_icon','$place_rating','$place_business_status','$place_id',:place_types)";
+        $user_id = $_SESSION['user_id'];
+        $sql = "INSERT INTO `wishlist`(`user_id`,`place_name`, `place_address`, `place_icon`, `place_rating`, `place_business_status`, `place_id`, `place_types`) VALUES ('$user_id','$place_name','$place_address','$place_icon','$place_rating','$place_business_status','$place_id',:place_types)";
         $qry = $pdo->prepare($sql);
         $qry->bindParam(':place_types', $place_types);
         $qry->execute();

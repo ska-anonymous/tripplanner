@@ -38,7 +38,7 @@
                     </div>
                     <div class="card-body">
                         <form id="places_form">
-                            <label for="location-search">Search For a Place</label>
+                            <label for="location-search">Search For Places</label>
                             <div class="row">
                                 <div class="col-sm-10">
                                     <div class="form-group">
@@ -180,9 +180,6 @@
                                             <a href="#" class="btn btn-sm bg-teal" onclick="addToWishList(event)">
                                                 <i class="bi bi-heart"></i> Add to Wish List
                                             </a>
-                                            <a href="#" class="btn btn-sm btn-primary">
-                                            <i class="bi bi-bus-front-fill"></i> Plan a Trip
-                                            </a>
                                         </div>
                                     </form>
                                     </div>
@@ -216,10 +213,10 @@
             let mapContainers = document.querySelectorAll('.map[data-place-id]');
             Array.from(mapContainers).forEach(container => {
                 let placeId = container.getAttribute('data-place-id');
-                (function mapInitiator(){
-                    try{
+                (function mapInitiator() {
+                    try {
                         initMap(placeId, container);
-                    }catch(err){
+                    } catch (err) {
                         mapInitiator();
                     }
                 })();
@@ -259,7 +256,5 @@
                 .finally(() => {
                     button.style.disabled = false;
                 })
-
-
         }
     </script>
