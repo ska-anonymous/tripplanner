@@ -233,17 +233,15 @@ if (!$_SESSION['logged']) {
             }
 
             // function for applying active attribute
-            window.onload = function() {
-                var currentUrl = window.location.href;
-                var menuItems = document.querySelectorAll('.nav-item');
+            var currentUrl = window.location.href;
+            var menuItems = document.querySelectorAll('.nav-item');
 
-                for (var i = 0; i < menuItems.length; i++) {
-                    var menuItemUrl = menuItems[i].querySelector('a').href;
-                    if (currentUrl.includes(menuItemUrl)) {
-                        menuItems[i].querySelector('a').classList.add('active');
-                        menuItems[i].closest('.nav-treeview')?.parentElement.classList.add('menu-open');
-                        menuItems[i].closest('.nav-treeview')?.parentElement.querySelector('.nav-link').classList.add('active');
-                    }
+            for (var i = 0; i < menuItems.length; i++) {
+                var menuItemUrl = menuItems[i].querySelector('a').href;
+                if (currentUrl.includes(menuItemUrl)) {
+                    menuItems[i].querySelector('a').classList.add('active');
+                    menuItems[i].closest('.nav-treeview')?.parentElement.classList.add('menu-open');
+                    menuItems[i].closest('.nav-treeview')?.parentElement.querySelector('.nav-link').classList.add('active');
                 }
-            };
+            }
         </script>

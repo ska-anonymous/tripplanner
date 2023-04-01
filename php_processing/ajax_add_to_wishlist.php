@@ -14,8 +14,9 @@
         extract($_POST);
      
         require_once('db_connect.php');
+        $user_id = $_SESSION['user_id'];
         // first check if whishlist already contains this place
-        $sql = "SELECT * FROM `wishlist` WHERE place_id='$place_id'";
+        $sql = "SELECT * FROM `wishlist` WHERE place_id='$place_id' AND user_id='$user_id'";
         $qry = $pdo->prepare($sql);
         $qry->execute();
         if($qry->rowCount()){
@@ -25,7 +26,6 @@
         }
 
         // now insert data to database
-        $user_id = $_SESSION['user_id'];
         $sql = "INSERT INTO `wishlist`(`user_id`,`place_name`, `place_address`, `place_icon`, `place_rating`, `place_business_status`, `place_id`, `place_types`) VALUES ('$user_id','$place_name','$place_address','$place_icon','$place_rating','$place_business_status','$place_id',:place_types)";
         $qry = $pdo->prepare($sql);
         $qry->bindParam(':place_types', $place_types);

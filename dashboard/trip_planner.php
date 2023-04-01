@@ -3,10 +3,15 @@
 
 <head>
     <title>Trip Planner</title>
+    <!-- Select2 -->
+    <link rel="stylesheet" href="../plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="../plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 
     <!-- include Header here -->
     <?php
     require_once("../components/header.php");
+    // include db
+    require_once('../php_processing/db_connect.php');
     ?>
     <!-- Header Ends here -->
 
@@ -53,6 +58,31 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="select-places">Select Places From Your Wishlist</label>
+                                        <div class="select2-purple">
+                                            <select class="select2" name="places_select[]" multiple="multiple" id="select-places" data-placeholder="Select a State" data-dropdown-css-class="select2-purple" style="width: 100%;">
+                                                <?php
+                                                $user_id = $_SESSION['user_id'];
+                                                $sql = "SELECT * FROM wishlist WHERE user_id='$user_id'";
+                                                $qry = $pdo->prepare($sql);
+                                                $qry->execute();
+                                                if($qry->rowCount()){
+                                                    $data = $qry->fetchAll(PDO::FETCH_ASSOC);
+                                                    foreach($data as $row){
+                                                        echo '
+                                                            <option value="'.$row['place_id'].'">'.$row['place_name'].'</option>
+                                                        ';
+                                                    }
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -67,3 +97,11 @@
     <?php
     require_once("../components/footer.php");
     ?>
+
+    <!-- Page specific Scripts -->
+    <!-- Select2 -->
+    <script src="../plugins/select2/js/select2.full.min.js"></script>
+    <script>
+        //Initialize Select2 Elements
+        $('.select2').select2();
+    </script>
