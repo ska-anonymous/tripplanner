@@ -38,6 +38,8 @@
                                         <input type="text" class="form-control" name="trip_name" id="trip-name">
                                         <label for="num-of-travelers">Number of Travelers</label>
                                         <input type="number" name="num_of_travelers" class="form-control" min="1" id="num-of-travelers">
+                                        <label for="trip-description">Description</label>
+                                        <textarea name="trip_description" id="trip-description" class="form-control"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -46,6 +48,8 @@
                                         <input type="datetime-local" class="form-control" name="departure_time" id="departure-time">
                                         <label for="return-time">Return Time</label>
                                         <input type="datetime-local" class="form-control" name="return_time" id="return-time">
+                                        <label for="return-time">Trip Budget</label>
+                                        <input type="number" value="0" step="any" min="0" class="form-control" name="trip_budget" id="trip-budget">
                                     </div>
                                 </div>
                             </div>

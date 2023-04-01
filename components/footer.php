@@ -5,7 +5,7 @@
     Trip Planner
   </div>
   <!-- Default to the left -->
-  <strong>Copyright &copy; <?php echo date('Y'); ?> <a href="https://hostdomers.com" target="_blank">HOStDOMERS</a>.</strong> All rights reserved.
+  Developed By<strong> Shereef</strong>
 </footer>
 </div>
 <!-- ./wrapper -->
