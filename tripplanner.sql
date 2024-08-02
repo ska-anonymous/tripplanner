@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 01, 2023 at 03:11 AM
+-- Generation Time: Feb 07, 2024 at 08:43 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 7.4.21
 
@@ -104,12 +104,14 @@ CREATE TABLE `wishlist` (
 --
 
 INSERT INTO `wishlist` (`id`, `user_id`, `place_name`, `place_address`, `place_icon`, `place_rating`, `place_business_status`, `place_id`, `place_types`, `time_stamp`) VALUES
-(8, 1, 'Badshahi Mosque', 'Walled City of Lahore, Lahore, Punjab, Pakistan', 'https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/worship_islam-71.png', 4.8, 'OPERATIONAL', 'ChIJsd4Nv50cGTkR3pC0D7HNvxM', '[\"mosque\",\"tourist_attraction\",\"place_of_worship\",\"point_of_interest\",\"establishment\"]', '2023-03-31 14:13:35'),
-(9, 1, 'Lahore Fort', 'H8Q7+56P, Fort Rd, Walled City of Lahore, Lahore, Punjab, Pakistan', 'https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png', 4.6, 'OPERATIONAL', 'ChIJbzSCLmIbGTkR7LRMMh7HvTU', '[\"tourist_attraction\",\"point_of_interest\",\"establishment\"]', '2023-03-31 14:15:09'),
-(10, 1, 'Jam-e-Shirin Park Lahore', 'Jam-e-Shirin Boulevard 15-G, Block C 3 Gulberg III, Lahore, Punjab 54000, Pakistan', 'https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/park-71.png', 4.4, 'OPERATIONAL', 'ChIJvQ80yUQEGTkRP482qnNEUL8', '[\"park\",\"tourist_attraction\",\"point_of_interest\",\"establishment\"]', '2023-03-31 14:17:58'),
-(11, 1, 'Pakistan Monument', 'M3V9+2Q9 Shakarparian Hills, Srinagar Hwy, Islamabad, Islamabad Capital Territory, Pakistan', 'https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/museum-71.png', 4.6, 'OPERATIONAL', 'ChIJDctv6-i_3zgRwZoAfxj1aYs', '[\"tourist_attraction\",\"point_of_interest\",\"establishment\"]', '2023-03-31 22:47:27'),
-(12, 1, 'Daman-e-Koh', 'Daman -e- Koh Rd, E-7, Islamabad, Islamabad Capital Territory 44000, Pakistan', 'https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png', 4.6, 'OPERATIONAL', 'ChIJF8lv2Ra_3zgRrvR7XQxXPvc', '[\"tourist_attraction\",\"park\",\"point_of_interest\",\"establishment\"]', '2023-03-31 22:47:35'),
-(13, 1, 'Punjab', 'Punjab, Pakistan', 'https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/geocode-71.png', 0, 'false', 'ChIJy5pBdImU3zgRoOxO0hgwnjo', '[\"administrative_area_level_1\",\"political\"]', '2023-04-01 00:19:49');
+(17, 1, 'Badshahi Mosque', 'Walled City of Lahore, Lahore, Punjab, Pakistan', 'https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/worship_islam-71.png', 4.8, 'OPERATIONAL', 'ChIJsd4Nv50cGTkR3pC0D7HNvxM', '[\"mosque\",\"tourist_attraction\",\"place_of_worship\",\"point_of_interest\",\"establishment\"]', '2023-04-01 03:14:48'),
+(18, 1, 'Lahore Fort', 'H8Q7+56P, Fort Rd, Walled City of Lahore, Lahore, Punjab, Pakistan', 'https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png', 4.6, 'OPERATIONAL', 'ChIJbzSCLmIbGTkR7LRMMh7HvTU', '[\"tourist_attraction\",\"point_of_interest\",\"establishment\"]', '2023-04-01 03:15:14'),
+(19, 1, 'Sheesh Mahal', 'H8Q7+W65, Walled City of Lahore, Lahore, Punjab, Pakistan', 'https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png', 4.6, 'OPERATIONAL', 'ChIJv0SaimIbGTkRijTosQEqNHo', '[\"tourist_attraction\",\"point_of_interest\",\"establishment\"]', '2023-04-01 03:15:23'),
+(20, 1, 'Mochi Gate', 'H8GC+VJQ, Mohalla Porbian Mochi Gate Walled City of Lahore, Lahore, Punjab 54000, Pakistan', 'https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png', 4.4, 'OPERATIONAL', 'ChIJ6blhnFwbGTkRz8pIc_4XHCA', '[\"tourist_attraction\",\"point_of_interest\",\"establishment\"]', '2023-04-01 03:15:27'),
+(21, 1, 'Katpana Desert', 'K2 Resort, Katpana, Skardu, 16100', 'https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png', 4.6, 'OPERATIONAL', 'ChIJaSLFrSBk5DgR1QzFu4GNGQU', '[\"tourist_attraction\",\"point_of_interest\",\"establishment\"]', '2023-04-01 03:15:31'),
+(22, 1, 'lastminute.com London Eye', 'Riverside Building, County Hall, London SE1 7PB, United Kingdom', 'https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png', 4.5, 'OPERATIONAL', 'ChIJc2nSALkEdkgRkuoJJBfzkUI', '[\"tourist_attraction\",\"point_of_interest\",\"establishment\"]', '2023-04-01 03:15:53'),
+(23, 1, 'Madame Tussauds London', 'Marylebone Rd, London NW1 5LR, United Kingdom', 'https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png', 4.4, 'OPERATIONAL', 'ChIJgZ24Us4adkgRpDNAwNPO_SY', '[\"tourist_attraction\",\"point_of_interest\",\"establishment\"]', '2023-04-01 03:15:58'),
+(24, 1, 'Jack The Ripper Museum', '12 Cable St, Aldgate, London E1 8JG, United Kingdom', 'https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/museum-71.png', 4.1, 'OPERATIONAL', 'ChIJP0WVyDUDdkgRyXw130nxbxE', '[\"tourist_attraction\",\"museum\",\"point_of_interest\",\"establishment\"]', '2023-04-01 03:16:05');
 
 --
 -- Indexes for dumped tables
@@ -139,8 +141,7 @@ ALTER TABLE `users`
 -- Indexes for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `place_id` (`place_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -168,7 +169,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
